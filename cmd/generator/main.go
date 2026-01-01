@@ -16,11 +16,11 @@ import (
 
 func main() {
 	// Command line flags
-	interval := flag.Duration("interval", 500*time.Millisecond, "Interval between log generation")
+	interval := flag.Duration("interval", 5*time.Millisecond, "Interval between log generation")
 	format := flag.String("format", "json", "Output format: json or text")
 	count := flag.Int("count", 0, "Number of logs to generate (0 for infinite)")
 	output := flag.String("output", "logs/app.log", "Output log file path")
-	rotate := flag.Int64("rotate-size", 10, "Rotate log file when it reaches this size in MB (0 to disable)")
+	rotate := flag.Int64("rotate-size", 1, "Rotate log file when it reaches this size in MB (0 to disable)")
 	flag.Parse()
 
 	// Create output directory if it doesn't exist
