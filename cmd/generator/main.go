@@ -37,8 +37,8 @@ func main() {
 	defer file.Close()
 
 	// Use buffered writer for better performance
-	writer := bufio.NewWriter(file)
-	defer writer.Flush()
+	buffWriter := bufio.NewWriter(file)
+	defer buffWriter.Flush()
 
 	fmt.Println("🚀 Log Generator Started")
 	fmt.Printf("   Output: %s\n", *output)
@@ -92,7 +92,7 @@ func main() {
 			}
 
 			// Write to file
-			n, err := writer.WriteString(line + "\n")
+			n, err := buffWriter.WriteString(line + "\n")
 			if err != nil {
 				log.Printf("Error writing to log file: %v", err)
 				continue
@@ -103,13 +103,13 @@ func main() {
 
 			// Flush periodically for visibility
 			if generated%100 == 0 {
-				writer.Flush()
+				buffWriter.Flush()
 				fmt.Printf("\r📝 Generated %d logs (%.2f MB)", generated, float64(currentSize)/(1024*1024))
 			}
 
 			// Check for rotation
 			if rotateBytes > 0 && currentSize >= rotateBytes {
-				writer.Flush()
+				buffWriter.Flush()
 				file.Close()
 
 				// Rotate file
@@ -123,18 +123,18 @@ func main() {
 				if err != nil {
 					log.Fatalf("Failed to open new log file: %v", err)
 				}
-				writer = bufio.NewWriter(file)
+				buffWriter = bufio.NewWriter(file)
 				currentSize = 0
 			}
 
 			if *count > 0 && generated >= *count {
-				writer.Flush()
+				buffWriter.Flush()
 				fmt.Printf("\n✅ Generated %d logs to %s\n", generated, *output)
 				return
 			}
 
 		case <-done:
-			writer.Flush()
+			buffWriter.Flush()
 			fmt.Printf("\n✅ Generated %d logs total to %s\n", generated, *output)
 			return
 		}
