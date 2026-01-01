@@ -1,10 +1,11 @@
 package logger
 
 import (
-	"encoding/json"
 	"fmt"
 	"math/rand"
 	"time"
+
+	json "github.com/goccy/go-json"
 )
 
 // LogLevel represents the severity of a log entry
