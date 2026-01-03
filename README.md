@@ -1,7 +1,5 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Go-1.21+-00ADD8?style=for-the-badge&logo=go&logoColor=white" alt="Go Version"/>
-  <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License"/>
-  <img src="https://img.shields.io/badge/Status-Production%20Ready-brightgreen?style=for-the-badge" alt="Status"/>
 </p>
 
 <h1 align="center">⚡ Log Processor</h1>
@@ -228,12 +226,6 @@ The processor automatically saves progress:
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
