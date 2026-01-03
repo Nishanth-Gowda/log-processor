@@ -13,6 +13,9 @@ bin/
 
 # Generated logs (for testing)
 logs/
+
+# Offset tracking files
+offsets/
 *.log
 *.log.*
 
